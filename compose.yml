@@ -1,0 +1,17 @@
+services:
+  certwatch:
+    container_name: certwatch
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    restart: unless-stopped
+    expose:
+      - 80
+    volumes:
+      - ./certwatch:/usr/local/bin/certwatch
+      - ./domains.txt:/usr/local/bin/domains.txt
+    env_file:
+      - .env
+    working_dir: /usr/local/bin/
+    command: ["/bin/bash", "-c", "./certwatch"]
