@@ -6,8 +6,6 @@ services:
       dockerfile: Dockerfile
     tty: true
     restart: unless-stopped
-    expose:
-      - 80
     volumes:
       - ./certwatch:/usr/local/bin/certwatch
       - ./domains.txt:/usr/local/bin/domains.txt
